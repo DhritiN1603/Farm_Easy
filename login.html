@@ -1,0 +1,71 @@
+<!--Login page-->
+
+<!DOCTYPE html>
+<html>
+<title>Login</title>
+<!-- Latest compiled and minified CSS -->
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+<link rel="stylesheet" type= "text/css" href="{{url_for('static',filename='style.css')}}">
+<!-- <img src="{{url_for('static', filename='field.jpg')}}"/> -->
+
+
+
+<body style="background-image: url('static/field.jpg')">
+    <h1 style="margin-top: 50px;"><u>Welcome to Farm- Easy </u></h1><br>
+    <h2 style="color:rgb(216, 216, 216)" ;>LOGIN</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-5"
+                style='margin:auto;background-color:rgba(51, 41, 35, 0.6); color: rgb(252, 246, 246); padding: 25px; border: 2px solid black'>
+                <center>
+                    <!--farmer-login-->
+                    <form action="#" method="POST">
+                        <h2>Farmer</h2><br>
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="f_user" value=""><br>
+                        <label for="pws">Password :</label>
+                        <input type="password" id="pws" name="psw" value=""><br><br>
+
+                        <!-- <input class="btn btn-info" type="submit" value="farmer" name="sub"> -->
+                        <button type="submit" name="sub" class="btn btn-info" value="farmer">Submit</button>
+                        <input class="btn btn-secondary" type="reset" value="Reset">
+
+                </center>
+                </form>
+            </div>
+
+            <!--customer-login-->
+            <div class="col-sm-5"
+                style='margin:auto;background-color:rgba(51, 41, 35, 0.6); color: rgb(253, 245, 245); padding: 25px; border: 2px solid black'>
+                <form action="#" method="POST">
+                    <center>
+                        <h2>Customer</h2><br>
+                        <label for="username">Username:</label>
+                        <input required type="text" id="username" name="c_user" value=""><br>
+                        <label for="psw">Password :</label>
+                        <input required type="password" id="pws" name="pws" value=""><br><br>
+
+                        <!-- <input class="btn btn-info" type="submit" value="Submit" name="sub"> -->
+                        <button type="submit" name="sub" class="btn btn-info" value="customer">Submit</button>
+                        <input class="btn btn-secondary" type="reset" value="Reset">
+
+                    </center>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
