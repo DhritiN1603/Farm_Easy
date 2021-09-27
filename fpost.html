@@ -1,0 +1,65 @@
+{% extends "base.html"%}
+{% block title %}
+posts
+{% endblock %}
+{% block head %}
+    <style>
+        table{width: 80%;
+        border-color: transparent;}
+            th,
+        td {
+        margin: auto;
+        border: transparent;
+        border-collapse: collapse;
+        text-align: center;
+        }
+
+         th,
+        td {
+        background-color: transparent
+    }
+        td{width:30%;}
+    </style>
+{% endblock %}
+{% block content %}
+<h1 style="margin-top: 50px;color: white ;text-shadow: 3px 2px black">Create a new post:</h1><br>
+
+<div class="col-sm-5"
+    style='margin:auto;background-color:rgba(110, 103, 99, 0.6); color: rgb(253, 245, 245); padding: 30px; border: 2px solid black;'>
+    <form action="#" method="POST">
+        <center>
+            <table>
+                <tr><td><label for="crops">Crop Name</label></td><td><select style=width:180px name="crops" id="crops" required>
+                    <option value="" disabled selected hidden>Select Item</option>
+                    <option value='Jowar'> Jowar</option>
+                    <option value='Maize'> Maize </option>
+                    <option value='Rice'> Rice</option>
+                    <option value='Ragi'> Ragi </option>
+                    <option value='Wheat'> Wheat </option>
+                    <option value='Brinjal'> Brinjal </option>
+                    <option value='Beetroot'> Beetroot </option>
+                    <option value='Cauliflower'>Cauliflower</option>
+                    <option value='Carrot'> Carrot </option>
+                    <option value='Capsicum'> Capsicum </option>
+                    <option value='Onions'> Onions</option>
+                    <option value='Okra'> Okra </option>
+                    <option value='Potato'> Potato </option>
+                    <option value='Radish'> Radish </option>
+                    <option value='Tomato'> Tomato </option>
+                </select></td></tr>
+                <tr><td><label for="quant">Quantity(Kg)</label></td><td><input style=width:180px required type="number" step="0.1" min="1" max="200" id="quant" name="quant" value=""></td></tr>
+                <tr><td><label for="price">Price(per Kg)</label></td><td><input style=width:180px required type="number" step="0.1" min="1" id="price" name="price" value=""></td></tr>
+                <tr><td><label for="exp" >Expiry Date</label></td><td><input style=width:180px required type="date" id="exp" name="expiry"></td></tr>
+            </table>
+
+
+            
+            <br>
+            <button type="submit" name="sub" class="btn btn-info" value="post">Submit</button>
+            <button type="reset" name="reset" class="btn btn-primary" value="Reset">Reset</button>
+        
+        </center>
+    </form>
+</div>
+
+{% endblock %}

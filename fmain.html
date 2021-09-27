@@ -1,0 +1,51 @@
+{% extends "base.html"%}
+{% block title %}
+Farmer home
+{% endblock %}
+
+{% block content %}
+
+<h2 style="margin-top: 50px;">Welcome back , {{fdata[0][1]}}!!!</h2><br>
+<h2 style="margin-bottom: 50px;">Your Posts </h2>
+<style>
+    table,
+    th,
+    td {
+        text-align: center;
+        margin: auto;
+        border: 1px solid rgb(0, 0, 0);
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        background-color: #f2fac8;
+    }
+</style>
+<table style="width: 75%">
+    <tr>
+        <th>CROP NAME </th>
+        <th>QUANTITY</th>
+        <th>PRICE(per kg)</th>
+        <th>POSTED ON</th>
+        <th>EXPIRY</th>
+        <th>DELETE</th>
+        
+    </tr>
+    {% for i in html_data %}
+    <tr>
+        <td>{{i[1]}}</td>
+        <td>{{i[2]}}</td>
+        <td>{{i[3]}}</td>
+        <td>{{i[4]}}</td>
+        <td>{{i[5]}}</td>
+        
+        
+        <form action="{{url_for('fdel')}}" method= "POST">
+            <td><button type= "submit" class="btn-info btn-block" name="del" value= {{i[6]}}>DELETE POST</button></td>
+        </form>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
