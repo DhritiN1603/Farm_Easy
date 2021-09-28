@@ -4,7 +4,6 @@ Farmer home
 {% endblock %}
 
 {% block content %}
-
 <h2 style="margin-top: 50px;">Welcome back , {{fdata[0][1]}}!!!</h2><br>
 <h2 style="margin-bottom: 50px;">Your Posts </h2>
 <style>
@@ -39,7 +38,6 @@ Farmer home
         <td>{{i[3]}}</td>
         <td>{{i[4]}}</td>
         <td>{{i[5]}}</td>
-        
         
         <form action="{{url_for('fdel')}}" method= "POST">
             <td><button type= "submit" class="btn-info btn-block" name="del" value= {{i[6]}}>DELETE POST</button></td>
