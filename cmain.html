@@ -1,0 +1,48 @@
+{% extends "cbase.html"%}
+{% block title %}
+customer home
+{% endblock %}
+
+{% block content %}
+
+<h2 style="margin-top: 50px;text-align: center;">Welcome back , {{cdata[0][1]}}!!! Have fun Shopping!</h2><br>
+<h2 style="text-align: center; margin-bottom: 50px;">Available Deals: </h2>
+<style>
+  table,
+  th,
+  td {
+    margin: auto;
+    border: 1px solid rgb(0, 0, 0);
+    border-collapse: collapse;
+    text-align: center;
+  }
+
+  th,
+  td {
+    background-color: #d4dda8;
+  }
+</style>
+<table style="width: 80%">
+  <tr>
+    <th>CROP NAME </th>
+    <th>FARMER NAME</th>
+    <th>QUANTITY(Available)</th>
+    <th>PRICE(per Kg) </th>
+    <th>BEST BEFORE</th>
+    <th>PLACE ORDER</th>
+  </tr>
+  {% for i in html_data %}
+  <tr>
+    <td>{{i[0]}}</td>
+    <td>{{i[1]}}</td>
+    <td>{{i[3]}}</td>
+    <td>{{i[2]}}</td>
+    <td>{{i[4]}}</td>
+    <form action="#" method="POST">
+      <td><button type="submit" name="h_id" class="btn-info btn-block" , value={{i[5]}}>Order Now</button></td>
+  </tr>
+  </form>
+  {% endfor %}
+</table>
+
+{% endblock %}
