@@ -1,0 +1,45 @@
+{% extends "cbase.html"%}
+{% block title %}
+order
+{% endblock %}
+{% block head %}
+    <style>
+        table{width: 80%;
+        border-color: transparent;}
+            th,
+        td {
+        margin: auto;
+        border: transparent;
+        border-collapse: collapse;
+        text-align: center;
+        }
+
+         th,
+        td {
+        background-color: transparent
+    }
+        td{width:20%;}
+        
+    </style>
+{% endblock %}
+{% block content %}
+<h1 style="margin-top: 100px;text-shadow: 3px 2px black;color: white;">New Order</h1><br>
+
+<div class="col-sm-5"
+    style='margin:auto;background-color:rgba(116, 111, 108, 0.6); color: rgb(253, 245, 245); padding: 30px; border: 2px solid black;'>
+    <form action="#" method="POST">
+        <center>
+            <table >
+                <tr><td><label for="quant">Quantity(Kg)</label></td><td><input style=width:150px required type="number" step="0.1" min="1" max="200" id="quant" name="quantity" value=""></td></tr>
+                
+            </table>
+            <br>
+            <button type="submit" name="sub" class="btn btn-info" value="post">Submit</button>
+            <button type="reset" name="reset" class="btn btn-primary" value="Reset">Reset</button>
+        
+        </center>
+    </form>
+</div>
+
+{% endblock %}
+
