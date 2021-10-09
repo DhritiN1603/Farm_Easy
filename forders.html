@@ -1,0 +1,66 @@
+<!-- Viewing Orders -->
+{% extends "base.html"%}
+{% block title %}
+my orders
+{% endblock %}
+
+{% block content %}
+<h1 style="margin-top: 50px;margin-bottom: 50px;text-align: center;color:rgb(255, 255, 255)">Your Orders </h1><br>
+
+<style>
+    table,
+    th,
+    td {
+        margin: auto;
+        border: 1px solid rgb(0, 0, 0);
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    th,
+    td {
+        background-color: #f2fac8;
+    }
+</style>
+<table style="width: 90%">
+    <tr>
+        <th>CUSTOMER NAME</th>
+        <th>ADDRESS</th>
+        <th>CROP NAME</th>
+        <th>QUANTITY</th>
+        <th>PRICE</th>
+        <th>STATUS</th>
+        <th colspan="2">APPROVAL</th>
+    </tr>
+    {% for i in html_data %}
+
+    <tr>
+        <td>{{i[0]}}</td>
+        <td>{{i[1]}}</td>
+        <td>{{i[2]}}</td>
+        <td>{{i[3]}}</td>
+        <td>{{i[4]}}</td>
+        <td>{{i[5]}}</td>
+
+        <form action="{{url_for('Accept')}}" method="POST">
+            {% if i[5]=="Order Placed"%}
+            <td>
+                <button type="submit" class="btn-block bg-success" name="accept" value={{i[6]}}>ACCEPT</button>
+            </td>
+            {%else%}
+            <td colspan="2"> -- </td>
+            
+            {%endif%}
+
+        </form>
+        <form action="{{url_for('Reject')}}" method="POST">
+            {% if i[5]=="Order Placed"%}
+            <td>
+                <button type="submit" class="btn-block bg-danger" name="reject" value={{i[7]}}>REJECT</button>
+            </td>
+            
+            {%endif%}
+        </form>
+    </tr>
+    {% endfor %}
+    {% endblock %}
