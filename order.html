@@ -1,0 +1,65 @@
+<!-- Viewing Orders -->
+{% extends "cbase.html"%}
+{% block title %}
+my orders
+{% endblock %}
+
+{% block content %}
+<h2 style="margin-top: 50px;margin-bottom: 50px;text-align: center;">Your Orders </h2><br>
+
+<style>
+    table,
+    th,
+    td {
+        margin: auto;
+        border: 1px solid rgb(0, 0, 0);
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    th,
+    td {
+        background-color: #ede5ee;
+    }
+    tr:nth-child(even) {
+        background-color: #e8a3f1;
+    }
+</style>
+<table style="width: 80%" margin-bottom="500px">
+    <tr>
+        
+        <th>FARMER</th>
+        <th>CROP NAME</th>
+        <th>QUANTITY</th>
+        <th>PRICE</th>
+        <th>STATUS</th>
+        <th>OPTION</th>
+    </tr>
+    {% for i in html_data %}
+    <tr >
+        <td>{{i[0]}}</td>
+        <td>{{i[1]}}</td>
+        <td>{{i[2]}}</td>
+        <td>{{i[3]}}</td>
+        <td>{{i[4]}}</td>
+        {%if i[4]=="Order Placed"%}
+        <form action="{{url_for('cancel')}}"  method="POST">
+            
+            <td><button  class="btn-block btn-info" name='Cancel' value={{i[5]}} >CANCEL</button>   
+        </form>
+            {%else%}
+            <td>--</td>
+            {%endif%}
+        {%if i[4]=="Out For Delivery"%}
+        <form action="{{url_for('ofd')}}"  method="POST">
+            
+            <td colspan="2"><button  class="btn-block btn-info" name='OFD' value={{i[5]}} >DELIVERED</button>
+            </td>
+            
+            {%endif%}
+            
+            
+        </form>
+    </tr>
+    {% endfor %}
+    {% endblock %}
