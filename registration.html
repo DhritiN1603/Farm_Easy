@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <title>Registrations</title>
+    <body style="background-image: url('static/farm_3.jpg')">
+        <style>
+            table
+            td{
+                text-align: left;
+                margin: auto;
+                background-color: transparent;
+                padding-right:30px;
+                border-color: transparent;
+            }
+        </style>
+
+        <!-- Latest compiled and minified CSS -->
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" type= "text/css" href="{{url_for('static',filename='style.css')}}">
+
+
+<h2 style="margin-top: 50px;"><b>Registration</b></h2><br>
+<div class="col-sm-5" style='margin:auto;background-color:rgba(58, 48, 42, 0.6); color: rgb(253, 245, 245); padding: 25px; border: 2px solid black'>
+        <form action="#" method="POST">
+            <center>
+                
+                <table>
+                <tr ><td ><label for="name">Full Name</label></td>
+                    <td><input style=width:160px required type="text" id="fn" name="fn" value=""></td></tr>
+                
+                <tr><td><label for="type">The Role </label></td>
+                    <td>
+                        <select style=width:160px required id="role" name="role">
+                        <option value="Null" disabled select hidden>Choose</option>
+                        <option value="Farmer">Farmer</option>
+                        <option value="Customer">Customer</option>
+                    </td></tr>
+                </select>
+                
+                <tr><td><label for="username">Username </label></td>
+                    <td><input style=width:160px required type="text" id="user" name="user" value=""></td></tr>
+                <tr><td><label for="psw">Password  </label></td>
+                <td><input style=width:160px required type="text" id="pws" name="pws" value="" minlength="6" maxlength="8"></td></tr>
+                <tr><td><label for="Address">Address</label></td>
+                    <td><input style= width:160px required type="text" id="add" name="add" value=""></td></tr>
+                    
+                </table>  
+                <br>
+                <button type="submit" name="sub" class="btn btn-info" value="customer">Submit</button>
+                <input class="btn btn-secondary" type="reset" value="Reset">
+           
+            </center>
+        </form>
+       
+    </div>
+    <center><a href="{{url_for('login_page')}}"><h4 style="margin-top: 50px; text-shadow: 3px 2px black; color: cornsilk">Back To Login</h4></a></centre></center>  
+
+    </body>
+</html>
