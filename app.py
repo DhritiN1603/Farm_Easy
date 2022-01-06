@@ -43,7 +43,7 @@ def login_page():
     elif(request.method == "POST" and request.form["sub"]=="customer"):
         username= request.form["c_user"]
         password=request.form["pws"]
-        mycursor.execute("select * from customer where user_id = '"+username+"' and password = '"+password+"';")
+        mycursor.execute("select * from customers where user_id = '"+username+"' and password = '"+password+"';")
         c_data=mycursor.fetchall()
         print(c_data)
         
@@ -58,7 +58,57 @@ def login_page():
         
 
     return render_template("login.html")
-    
+#Video:
+@app.route('/quicktour',methods=["POST","GET"])
+def video():
+    return render_template("video.html")
+
+#registration page
+@app.route('/registration',methods=["POST","GET"])  
+def signup():
+    if (request.method=="POST"):
+        role= request.form["role"]
+        name=request.form["fn"]
+        username=request.form["user"]
+        password=request.form["pws"]
+        print(role,name,username,password)
+        address=request.form["add"]
+        if role=="Farmer":
+            mycursor.execute("select * from farmer")
+            data=mycursor.fetchall()
+            print(data)
+            for val in data:
+                if val[3]==username:
+                    print("Username already exists")
+                    break
+                else:
+                    sql="""insert into farmer(f_name,address,user_id,password)
+                    Values(' """+name+"'"+','+"'"+address+"'"+','+"'"+username+"'"+','+"'"+password+"'"+')'
+                    print(sql)
+                    mycursor.execute(sql)
+                    conn.commit()
+
+                    return redirect(url_for("login_page"))
+        else:
+            mycursor.execute("select * from customers")
+            data=mycursor.fetchall()
+            print(data)
+            for val in data:
+                if val[3]==username:
+                    print("Username already exists")
+                    break
+                else:
+                    sql="""insert into customers(c_name,address,user_id,password)
+                    Values(' """+name+"'"+','+"'"+address+"'"+','+"'"+username+"'"+','+"'"+password+"'"+')'
+                    print(sql)
+                    mycursor.execute(sql)
+                    
+                    conn.commit()
+                    print("Successfully Registered")
+                    return redirect(url_for("login_page"))
+                    
+    return render_template("registration.html")
+      
 #farmer home page-----x-------------x-------------
 @app.route('/farmer',methods=["POST","GET"])
 def fmain():
@@ -102,7 +152,6 @@ def cmain():
 def fpost():
     if(request.method == "POST"):
         items= request.form["crops"]
-        
         quant=request.form["quant"]
         price=request.form["price"]
         expiry=request.form["expiry"]
@@ -170,7 +219,7 @@ def orders():
 @app.route("/myorders",methods=["POST","GET"])
 def forders():
     sql="""Select  c.c_name, c.address, cr.name, t.quantity , t.price, t.status,t.t_id,t.t_id
-    from transaction t  , harvestpost h , crop cr, customer c
+    from transaction t  , harvestpost h , crop cr, customers c
     where c.c_id=t.c_id  
     and  h.h_id=t.h_id   and cr.cr_id=h.cr_id and f_id=""" + str(session["fid"])
 
@@ -193,7 +242,7 @@ def Accept():
 def Reject():
     if request.method=="POST":
         session["tid"]=request.form["reject"]
-        sql="update transaction set status= 'Rejected ' where t_id= "+session["tid"]
+        sql="update transaction set status= 'REJECTED ' where t_id= "+session["tid"]
         mycursor.execute(sql)
         print(sql)
         conn.commit()
