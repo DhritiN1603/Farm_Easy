@@ -4,24 +4,9 @@ Farmer home
 {% endblock %}
 
 {% block content %}
-<h2 style="margin-top: 50px;">Welcome back , {{fdata[0][1]}}!!!</h2><br>
-<h2 style="margin-bottom: 50px;">Your Posts </h2>
-<style>
-    table,
-    th,
-    td {
-        text-align: center;
-        margin: auto;
-        border: 1px solid rgb(0, 0, 0);
-        border-collapse: collapse;
-    }
-
-    th,
-    td {
-        background-color: #f2fac8;
-    }
-</style>
-<table style="width: 75%">
+<h2 style="margin-top: 30px;">Welcome back , {{fdata[0][1]}}!!!</h2><br>
+<h2 style="margin-bottom: 30px;">Your Posts </h2>
+<table class="table">
     <tr>
         <th>CROP NAME </th>
         <th>QUANTITY</th>
@@ -29,7 +14,7 @@ Farmer home
         <th>POSTED ON</th>
         <th>EXPIRY</th>
         <th>DELETE</th>
-        
+
     </tr>
     {% for i in html_data %}
     <tr>
